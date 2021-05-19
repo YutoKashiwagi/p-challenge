@@ -1,7 +1,7 @@
 ## 1
 
 curlコマンド
-`curl -G -H 'X-Test:hello' https://httpbin.org/headers`
+`curl -H 'X-Test:hello' https://httpbin.org/headers`
 
 ## 2
 
@@ -17,8 +17,6 @@ curlコマンド
 
 curlコマンド
 `curl -H 'Content-Type: application/json' -X POST -d '{"userA": {"name": "hoge", "age": 29}}' https://httpbin.org/post`
-
-curl -i -H 'Content-Type: application/json' -X POST -d '{ "name": "kashiwamochi", "email": "kashiwagi19950714@gmail.com" }' http://challenge-your-limits.herokuapp.com/challenge_users 
 
 ## クイズ
 
@@ -43,5 +41,36 @@ postmanではリクエストのURLやヘッダー、ボディなどで環境変�
 どのような値に環境変数を利用すると効果的でしょうか？例とその理由を教えてください
 
 #### 3
-問題2をPre-Request-Scriptを使ってレスポンスボデイを設定する形で再現してください
-（Pre-Request-Scriptのコードのみ送ってもらえれば大丈夫です）
+問題2はリクエストボディに以下のJSONを書いて送信していました
+
+```JSON
+
+{
+    "name": "hoge"
+}
+
+```
+
+このリクエストボディに以下のように環境変数`request_body`を設定し、
+
+```
+
+{{request_body}}
+
+```
+
+Pre-Request-Scriptを使ってこの環境変数に上記のJSONを埋め込む形でこの課題を再現してください
+(Pre-Request-Scriptのみ提出してもらえればOKです)
+
+##### 回答
+
+```JS
+
+const body = {
+    name: "hoge"
+}
+
+pm.environment.set('request_body', JSON.stringify(body))
+
+```
+
