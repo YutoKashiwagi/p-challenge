@@ -10,5 +10,19 @@
   <div>
     <p>hello</p>
   </div>
+  <script>
+    const getCookie = async () => {
+      const thirdPartyDomain = "<%= thirdPartyDomain %>"
+
+      const data = await fetch(`https://${thirdPartyDomain}`, {
+        method: 'GET',
+        credentials: 'include'
+      })
+
+      console.log(data.json)
+    }
+
+    getCookie()
+  </script>
 </body>
 </html>
