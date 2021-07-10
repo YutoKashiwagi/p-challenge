@@ -11,7 +11,7 @@ CORSを利用してブラウザからクロスオリジンのリクエストを�
 ## 2
 Access-Control-Allow-Originをワイルドカードに指定していると、資格情報を持ったリクエストがCORS違反になる
 
-## simple request
+## 3 simple request
 
 - simple requestの条件
   - ブラウザがデフォルトで許可しているGET, POSTリクエストのこと
@@ -22,6 +22,11 @@ Access-Control-Allow-Originをワイルドカードに指定していると、�
 
 - XHRで資格情報を送信するためにどうするか
   - withCredentialsフラグをtrueにする
+
+## 4 CORSの設定をしてあるサーバーに対して、CURLでリクエストを送るとどうなるか
+
+CORSはブラウザ上で異なるオリジンへリクエストを行う場合の話なので、curlでのリクエストはCORS制約は適用されず、成功する
+
 
 ## クイズ
 

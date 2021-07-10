@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cors app</title>
+</head>
+<body>
+  <div>
+    <div>
+      <button onclick="simple()">simple request</button>
+    </div>
+
+    <div>
+      <button onclick="notSimple()">not simple request</button>
+    </div>
+  </div>
+  <script>
+    const apiOrigin = "<%= apiOrigin %>"
+
+    const simple = () => {
+      fetch(
+        apiOrigin,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'text/plain'
+          }
+        }
+      ).then(data => console.log('simple request success'))
+    }
+
+    const notSimple = () => {
+      fetch(
+        apiOrigin,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+        .then(data => data.json())        
+        .then(data => console.log(data))
+    }
+  </script>
+</body>
+</html>
