@@ -15,6 +15,13 @@ app.use('/static/without-cache', express.static('public/without-cache', {
   lastModified: false
 }))
 
+// max-ageを使ってキャッシュ
+app.use('/static/using-cache-maxage', express.static('public/using-cache', {
+  etag: false,
+  lastModified: false,
+  maxAge: 5000
+}))
+
 app.get('/', (req, res) => {
   res.setHeader('Cache-Control', 'no-store') // ページのキャッシュをオフにする
   res.render('index')
