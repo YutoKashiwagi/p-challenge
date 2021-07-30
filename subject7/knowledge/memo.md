@@ -48,9 +48,42 @@ https://www.mnot.net/cache_docs/#EXPIRES
 
 後続のリクエストをキャッシュさせたい場合に指定する。指定したヘッダーを持つ後続のリクエストをキャッシュする
 
-## ブラウザのキャッシュ上限
+## ブラウザのキャッシュ上限について
 
-todo
+- ブラウザのストレージ容量は基本的に動的で、ハードディスクドライブのサイズに応じて変わる
+- グローバルリミットはディスク空き容量の50%
+
+https://developer.mozilla.org/ja/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria#storage_limits
+
+### 削除方法
+
+基本的に[LRU(Least Recently Used)ポリシー](https://ja.wikipedia.org/wiki/Least_Recently_Used)に基づいて、オリジンごとに削除される
+
+#### origin eviction
+
+ストレージの総量が上限に達した場合、オリジンごとにストレージを削除していく。オリジンごとに削除する理由は、あるオリジン内の一部のデータだけ削除すると矛盾が発生する可能性があるから
+
+#### グループリミット
+
+eTLD+1を一つのグループとしてまとめて、そのグループごとにキャッシュ上限をグローバルリミットの20%に指定する
+
+https://developer.mozilla.org/ja/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria#storage_limits
+
+> また、グループリミットというもうひとつの制限もあります。これは、グローバルリミットの 20% として定義されます。それぞれの生成元は、グループ (生成元のグループ) の一部です。グループは、eTLD+1 ドメインごとに 1 つ作られます。例えば次の通り:
+mozilla.org — グループ 1、生成元 1
+www.mozilla.org — グループ 1、生成元 2
+joe.blogs.mozilla.org — グループ 1、生成元 3
+firefox.com — グループ 2、生成元 4
+
+### Chrome
+
+#### 容量上限
+
+デフォルトでは、利用可能なディスク容量の割合からキャッシュ上限を設定する。キャッシュ上限はバイト単位でユーザーが変更できる
+
+https://cloud.google.com/blog/ja/products/chrome-enterprise/improvements-and-polices-make-chrome-more-performant
+
+> ディスク使用量 DiskCacheSize: デフォルトで、Chrome はキャッシュの最大サイズを、利用可能なディスク容量の割合として計算し設定します。このポリシーは、Chrome が使用するキャッシュのサイズの上限を設定します。これは共有リソースを使用する仮想マシンにとって重要になる場合があります。上限は、合計ディスク容量（または通常の状況で予想される空きディスク容量）と、ディスク キャッシュ サイズの間の桁数にすることをおすすめします。たとえば、ディスク容量が 10 GB であれば、キャッシュの上限は 1 GB に設定します。
 
 ## 動的なページのキャッシュにexpiresを使うべきではない
 
@@ -61,6 +94,9 @@ expiresは期間のみに依存するキャッシュ方法なため、変更を�
 ### 動的ページのキャッシュ方法
 
 if-modified-sinceなど、変更を確認しつつキャッシュを利用するようにする
+
+## 他サイトでの利用例
+
 
 # キャッシュを使うべきでない状況
 
