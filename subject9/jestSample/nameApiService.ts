@@ -1,16 +1,11 @@
-export interface IHttpClient {
-  get: (url: string) => Promise<any>
-}
+import axios from "axios";
 
 export class NameApiService {
   private MAX_LENGTH = 4;
-  private httpClient: IHttpClient
-  public constructor(httpClient: IHttpClient) {
-    this.httpClient = httpClient
-  }
+  public constructor() {}
 
   public async getFirstName(): Promise<string> {
-    const { data } = await this.httpClient.get(
+    const { data } = await axios.get(
       "https://random-data-api.com/api/name/random_name"
     );
     const firstName = data.first_name as string;
