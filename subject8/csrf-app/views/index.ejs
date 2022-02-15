@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <h1>CSRF</h1>
+    <p>locahost:80でDVWAを起動しているかつ、ログイン済の場合、このフォームからパスワードが変更(CSRF)できます</p>
+    <p>下記のフォームはDVWAのCSRFのページのフォーム部分のHTMLをそのまま持ってきてます</p>
+    <form action="http://localhost:80/vulnerabilities/csrf/" method="GET">
+			New password:<br>
+			<input type="password" autocomplete="off" name="password_new"><br>
+			Confirm new password:<br>
+			<input type="password" autocomplete="off" name="password_conf"><br>
+			<br>
+			<input type="submit" value="Change" name="Change">
+		</form>
+  </body>
+</html>
