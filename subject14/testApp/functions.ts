@@ -47,3 +47,19 @@ export const multiply = (...args: number[]) => {
   }
   return result
 }
+
+export const divide = (...args: number[]) => {
+  if (args.length === 0) {
+    throw new Error('引数は一つ以上指定してください')
+  }
+  if (args.length > 30) {
+    throw new Error('引数が多すぎます')
+  }
+  
+  const initialValue = args.shift() as number
+  if (args.includes(0)) {
+    throw new Error('zero division error')
+  }
+  const result = args.reduce((previous, current) => previous / current, initialValue)
+  return result
+}

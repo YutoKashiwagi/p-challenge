@@ -1,4 +1,4 @@
-import { add, multiply, subtract } from "../functions"
+import { add, divide, multiply, subtract } from "../functions"
 
 describe('multiply', () => {
   // 計算のテスト
@@ -82,9 +82,25 @@ describe('subtract', () => {
 })
 
 describe('divide', () => {
-  it.todo('引数が一つの場合')
-  it.todo('引数が30個の場合、計算できること')
-  it.todo('引数が31個以上の場合、計算できないこと')
-  it.todo('引数が数字以外の場合、エラーになること')
-  it.todo('少数点部分')
+  describe('計算', () => {
+    it('割り算できること', () => {
+      expect(divide(...[4, 2])).toBe(2)
+      expect(divide(...[4, 2, 1])).toBe(2)
+      expect(divide(...[0, 1, 1])).toBe(0)
+    })
+    it('0で割るとエラーになること', () => {
+      expect(() => { divide(...[1, 0]) }).toThrow('zero division error')
+    })
+  })
+
+  describe('引数', () => {
+    it('引数は1個以上必要であること', () => {
+      expect(divide(...[2])).toBe(2)
+      expect(() => { divide(...[]) }).toThrow('引数は一つ以上指定してください')
+    })
+    it('引数が30個以下でなければいけないこと', () => {
+      expect(divide(...Array(30).fill(1))).toBe(1)
+      expect(() => { divide(...Array(31).fill(1)) }).toThrow('引数が多すぎます')
+    })
+  })
 })
