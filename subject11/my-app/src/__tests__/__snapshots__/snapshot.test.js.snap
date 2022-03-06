@@ -133,7 +133,7 @@ exports[`Storyshots Game Component OX Game 1`] = `
     className="game-info"
   >
     <div>
-      Next player: X
+      次のプレイヤー: X
     </div>
     <ol>
       <li>
