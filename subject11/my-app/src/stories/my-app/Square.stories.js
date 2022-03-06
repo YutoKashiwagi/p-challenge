@@ -1,4 +1,4 @@
-import { Square } from "../..";
+import { Square } from "../../components/Square";
 
 export default {
   title: 'Square Component',

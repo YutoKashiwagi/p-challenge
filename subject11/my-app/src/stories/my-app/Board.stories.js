@@ -1,4 +1,4 @@
-import { Board } from "../..";
+import { Board } from "../../components/Board"
 
 export default {
   title: 'Board Component',
