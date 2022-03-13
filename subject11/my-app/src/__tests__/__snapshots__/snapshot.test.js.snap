@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Board Component All Triangle 1`] = `
+<div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      △
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      △
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      △
+    </button>
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      △
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      △
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      △
+    </button>
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      △
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      △
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      △
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Game Component OX Game 1`] = `
+<div
+  className="game"
+>
+  <div
+    className="game-board"
+  >
+    <div>
+      <div
+        className="board-row"
+      >
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+      </div>
+      <div
+        className="board-row"
+      >
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+      </div>
+      <div
+        className="board-row"
+      >
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="game-info"
+  >
+    <div>
+      次のプレイヤー: X
+    </div>
+    <ol>
+      <li>
+        <button
+          onClick={[Function]}
+        >
+          Go to game start
+        </button>
+      </li>
+    </ol>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Square Component O Square 1`] = `
+<button
+  className="square"
+>
+  O
+</button>
+`;
+
+exports[`Storyshots Square Component Triangle Square 1`] = `
+<button
+  className="square"
+>
+  △
+</button>
+`;
+
+exports[`Storyshots Square Component X Square 1`] = `
+<button
+  className="square"
+>
+  X
+</button>
+`;
