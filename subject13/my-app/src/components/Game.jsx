@@ -1,5 +1,6 @@
 import React from "react"
 import { Board } from "./Board"
+import { Status } from "./Status"
 export class Game extends React.Component {
   constructor(props) {
     super(props)
@@ -45,7 +46,6 @@ export class Game extends React.Component {
   render() {
     const history = this.state.history
     const current = history[this.state.stepNumber]
-    const winner = calculateWinner(current.squares)
 
     const moves = history.map((step, move) => {
       const description = move ?
@@ -63,17 +63,6 @@ export class Game extends React.Component {
       )
     })
 
-    let status;
-    if (winner) {
-      status = 'Winner: ' + winner;
-    } else {
-      if (this.state.stepNumber === 9) {
-        status = 'Draw!'
-      } else {
-        status = '次のプレイヤー: ' + (this.state.xIsNext ? 'X' : 'O');
-      }
-    }
-
     return (
       <div className="game">
         <div className="game-board">
@@ -83,7 +72,13 @@ export class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div>{status}</div>
+          <div>
+            <Status
+              winner={calculateWinner(current.squares)}
+              stepNumber={this.state.stepNumber}
+              xIsNext={this.state.xIsNext}
+            />
+          </div>
           <ol>{moves}</ol>
         </div>
       </div>
