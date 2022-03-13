@@ -1,6 +1,7 @@
 import React from "react"
 import { Board } from "./Board"
 import { Status } from "./Status"
+import { Moves } from "./Moves"
 export class Game extends React.Component {
   constructor(props) {
     super(props)
@@ -44,24 +45,7 @@ export class Game extends React.Component {
   }
 
   render() {
-    const history = this.state.history
-    const current = history[this.state.stepNumber]
-
-    const moves = history.map((step, move) => {
-      const description = move ?
-        'Go to move #' + move :
-        'Go to game start'
-      
-      return(
-        <li key={move}>
-          <button
-            onClick={() => this.jumpTo(move)}
-          >
-            {description}
-          </button>
-        </li>
-      )
-    })
+    const current = this.state.history[this.state.stepNumber]
 
     return (
       <div className="game">
@@ -79,7 +63,10 @@ export class Game extends React.Component {
               xIsNext={this.state.xIsNext}
             />
           </div>
-          <ol>{moves}</ol>
+          <Moves
+            history={this.state.history}
+            onClick={(move) => this.jumpTo(move)}
+          />
         </div>
       </div>
     );
