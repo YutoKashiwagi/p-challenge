@@ -38,5 +38,6 @@ describe('マルバツゲーム', () => {
     cy.get('[data-qa=square5]').click()
 
     cy.contains('Draw!')
+    cy.contains('Winner:').should('not.exist')
   })
 })
