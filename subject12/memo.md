@@ -1,3 +1,18 @@
+## 動作確認
+
+```bash
+cd subject12/my-app
+
+# React立ち上げ
+yarn start
+
+# storybook立ち上げ
+yarn run storybook
+
+# テスト実施(storybookを立ち上げておく)
+yarn run test --watchAll
+```
+
 ## スナップショットテストと比べてのメリット・デメリット
 
 ### メリット
