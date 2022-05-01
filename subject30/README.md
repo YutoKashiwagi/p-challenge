@@ -17,13 +17,15 @@
 
 - Users
   - id
-  - ユーザー名
-  - メールアドレス
+  - name
+  - mail_address
 
 - Directries
   - id
-  - 作成者のid
-  - ディレクトリ名
+  - author_id
+  - name
+  - created_at
+  - updated_at
 
 - DirectryPath（ディレクトリの閉包テーブル）
   - ancester_id
@@ -32,7 +34,50 @@
 - Documents
   - id
   - directory_id
-  - 本文
-  - 作成者ID
-  - 作成日
-  - 編集日
+  - content
+  - author_id
+  - created_at
+  - updated_at
+
+## ER図
+
+```plantuml
+@startuml
+entity User {
+	*id: number
+    *name: varchar
+    *mail_address: varchar
+}
+
+entity Directry {
+	*id: number
+    *author_id: number <<FK>>
+    *name: varchar
+    *created_at: datetime
+    *updated_at: datetime
+}
+
+entity DirectryPath {
+	ancester_id: number <<FK>>
+    descendant_id: nubmer <<FK>>
+}
+
+entity Document {
+	id: nubmer
+    directry_id: number <<FK>>
+    author_id: number <<FK>>
+    content: text
+    created_at: datetime
+    updated_at: datetime
+}
+
+Document }o-- User
+Directry }o-- User
+Document }|-- Directry
+DirectryPath }|-- Directry
+Directry ||-- DirectryPath
+@enduml
+
+```
+
+![UML](document_app.png)
