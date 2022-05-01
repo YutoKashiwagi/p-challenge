@@ -6,20 +6,27 @@ https://github.com/praha-inc/praha-challenge-templates/blob/master/db/design/sus
 
 ## 論理モデルの設計
 
-- SetMenus
+- Menus
   - id
   - name
   - price
-  - type（握り、盛り込みなど）
   - created_at
   - updated_at
 
-- SingleMenus
+- MenuTypes（単品、セットなどの情報を記載）
   - id
+  - menu_id
   - name
-  - price
   - created_at
-  - updated_at
+    
+ - MenuCategories（握り、盛り込みなどの分類）
+   - id
+   - name
+   - created_at
+
+ - MenuTypeMenuCategories（MenuTypeとMenuCategoriesの中間テーブル）
+   - menu_type_id
+   - menu_category_id
 
 - Orders
   - id
@@ -45,20 +52,27 @@ https://github.com/praha-inc/praha-challenge-templates/blob/master/db/design/sus
 
 これによりオプションの追加と、同じメニューを複数頼んだ時に一つ一つオプションを設定できる(例: さび抜きのエビ一つ、さび入りかつシャリ大のエビ二つ)
 
-- SetMenus
+- Menus
   - id
   - name
   - price
-  - type
   - created_at
   - updated_at
 
-- SingleMenus
+- MenuTypes（単品、セットなどの情報を記載）
   - id
+  - menu_id
   - name
-  - price
   - created_at
-  - updated_at
+    
+ - MenuCategories（握り、盛り込みなどの分類）
+   - id
+   - name
+   - created_at
+
+ - MenuTypeMenuCategories（MenuTypeとMenuCategoriesの中間テーブル）
+   - menu_type_id
+   - menu_category_id
 
 - MenuOptions
   - id
