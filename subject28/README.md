@@ -10,7 +10,7 @@ https://github.com/praha-inc/praha-challenge-templates/blob/master/db/design/sus
   - id
   - name
   - price
-  - type
+  - type（握り、盛り込みなど）
   - created_at
   - updated_at
 
@@ -26,6 +26,7 @@ https://github.com/praha-inc/praha-challenge-templates/blob/master/db/design/sus
   - customer_name
   - customer_telephone
   - is_paid
+  - note
   - created_at
 
 - OrderDetails
@@ -70,6 +71,7 @@ https://github.com/praha-inc/praha-challenge-templates/blob/master/db/design/sus
   - customer_name
   - customer_telephone
   - is_paid
+  - note
   - created_at
 
 - OrderDetails
