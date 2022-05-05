@@ -4,6 +4,8 @@
 
 https://github.com/praha-inc/praha-challenge-templates/blob/master/db/design/sushi.png
 
+現段階でユーザー登録機能はまだなく、店舗に来てパネルで商品を選択するようなシステムを想定
+
 ## 論理モデルの設計
 
 - Menus
@@ -44,6 +46,62 @@ https://github.com/praha-inc/praha-challenge-templates/blob/master/db/design/sus
 
 ## UML
 
+```plantuml
+
+@startuml
+
+entity Menu {
+	*id: number
+  *name: varchar
+  *price: integer
+  *created_at: datetime
+  *updated_at: datetime
+}
+
+entity MenuType {
+	*id: number
+  *menu_id: nuber <<FK>>
+  *name: varchar
+  *created_at: datetime
+}
+
+entity MenuCategory {
+	*id: number
+  *name: varchar
+  *created_at: datetime
+}
+
+entity MenuTypeMenuCategory {
+  *menu_type_id: number
+  *menu_category_id: number
+}
+
+entity Order {
+  *id: number
+  *customer_name: varchar
+  *customer_telephone: varchar
+  *is_paid: boolean
+  *note: text
+  *created_at: datetime
+}
+
+entity OrderDetail {
+  *order_id: number <<FK>>
+  *menu_id: number <<FK>>
+  *count: integer
+  *sabinuki: boolean
+}
+
+Menu ||-- MenuType
+MenuTypeMenuCategory }|-- MenuType
+MenuTypeMenuCategory }|-- MenuCategory
+OrderDetail }|-- Order
+OrderDetail ||-- Menu
+@enduml
+
+```
+
+![UML](sushi_erd.png)
 # 2
 
 ## オプションとしてシャリの大小も追加できるようにしたい。どうすれば良い？
