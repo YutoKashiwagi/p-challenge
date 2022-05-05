@@ -19,52 +19,60 @@
 
 ### 論理設計
 
-- ユーザーが参加、脱退できる
-- 複数のチャネルを持つ
+```plantuml
 
-- WorkSpaces
-  - id
-  - name
-  - author_id
-  - created_at
-  - updated_at
+@startuml
 
-- WorkSpaceChannels
-  - workspace_id
-  - channel_id
+entity User {
+  *id: number
+  *mail_address: varchar
+  *name: varchar
+  *created_at: datetime
+}
 
-- Channels
-  - id
-  - workspace_id
-  - name
-  - created_at
-  - updated_at
+entity WorkspaceUsers {
+  *workspace_id: number <<FK>>
+  *user_id: number <<FK>>
+}
 
-- Users
-  - id
-  - mail_address
-  - name
-  - created_at
+entity Workspace {
+  *id: number
+  *name: varchar
+  *author_id : number <<FK>>
+  *created_at: datetime
+}
 
-- WorkSpaceUsers
-  - workspace_id
-  - user_id
+entity Channel {
+  *id: number
+  *workspace_id: number <<FK>>
+  *name: varchar
+  *created_at: datetime
+}
 
-- ChannelUsers
-  - channel_id
-  - user_id
+entity ChannelUsers {
+  *channel_id: number <<FK>>
+  *user_id : number <<FK>>
+}
 
-- Messages
-  - id
-  - author_id
-  - content
-  - created_at
-  - updated_at
+entity Message {
+  *id: number
+  *author_id: number <<FK>>
+  *content: text
+  *created_at: datetime
+  *updated_at: datetime
+}
 
-- ThreadMessages
-  - id
-  - author_id
-  - message_id
-  - content
-  - created_at
-  - updated_at
+entity ThreadMessage {
+  *id: number
+  *author_id: number <<FK>>
+  *message_id: number <<FK>>
+  *content: text
+  *created_at: datetime
+  *updated_at: datetime
+}
+
+@enduml
+
+```
+
+![UML](chat_tool_erd.png)
