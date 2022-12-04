@@ -18,22 +18,35 @@ closedAt: boolean -- 成約した日付が入る
 }
 ```
 
-属性が存在するかのフラグと属性自体を格納するカラムが存在しているが、前者は後者の値があるかどうかを確認すれば良いので必要のないカラムになっている
+- 属性が存在するかのフラグ属性自体を格納するカラムが存在しているが、前者は後者の値があるかどうかを確認すれば良いので必要のないカラムになっている
+- 電話をかけた日時がわからない
+- アポの方法を増やす場合、カラムを増やす必要がある
 
 # 課題2
 
-```
-TABLE NewCustomer {
+```mermaid
 
-id: varchar
+erDiagram
 
-telephone: boolean -- 電話をかけたらTRUEになる
-
-metAt: date -- 面談をした日付が入る。面談していない場合、dateの最大値を入れておく
-
-closedAt: date -- 成約した日付が入る。成約していない場合、dateの最大値を入れておく
-
+newCustomer {
+  id varchar
+  closedAt dateTime
 }
-```
 
-![UML](new_customer.png)
+actionToCustomer {
+  id varchar
+  customerId varchar
+  actionId varchar
+  actionedAt dateTime
+}
+
+action {
+  id varchar
+  name varchar
+}
+
+newCustomer ||--o{ actionToCustomer: "1:n"
+
+action ||--o{ actionToCustomer: "1:n"
+
+```
